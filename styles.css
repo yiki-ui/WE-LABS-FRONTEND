@@ -303,3 +303,200 @@ canvas#background-canvas {
     background: linear-gradient(135deg, #ff0033, #990033);
     box-shadow: 0 0 15px #ff0033;
 }
+/* [YOUR EXISTING CSS CODE REMAINS EXACTLY THE SAME AS ABOVE] */
+/* [PASTE ALL OF YOUR CURRENT CSS HERE] */
+/* [DON'T REMOVE ANY OF YOUR ORIGINAL STYLES] */
+
+/* ===== NEW RESPONSIVE ADDITIONS ===== */
+/* Responsive Design Improvements */
+@media (max-width: 1200px) {
+    .chat-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+    
+    .dyson-sphere {
+        left: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .chat-container {
+        bottom: 180px;
+    }
+    
+    .trigger-container {
+        bottom: 60px;
+    }
+    
+    .we-labs-box {
+        font-size: 40px;
+        padding: 10px 40px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    .chat-container {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        width: 90%;
+        max-width: 100%;
+        margin: 20px auto;
+    }
+    
+    .chat-box {
+        height: 400px;
+    }
+    
+    .trigger-container {
+        position: relative;
+        bottom: auto;
+        margin: 20px 0;
+        padding: 20px 0;
+    }
+    
+    .we-labs-box {
+        font-size: 32px;
+        padding: 10px 30px;
+        margin: 30px auto;
+    }
+    
+    .dyson-sphere {
+        position: relative;
+        bottom: auto;
+        left: 50%;
+        margin: 20px auto;
+        transform: translateX(-50%);
+    }
+    
+    .messages-container {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .chat-box {
+        height: 350px;
+        padding: 10px;
+    }
+    
+    .we-labs-box {
+        font-size: 28px;
+        padding: 8px 20px;
+    }
+    
+    .message {
+        max-width: 85%;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .button-container {
+        flex-direction: column;
+    }
+    
+    .futuristic-btn {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    #chat-input {
+        width: 93%;
+    }
+}
+
+@media (max-width: 400px) {
+    .we-labs-box {
+        font-size: 24px;
+        padding: 6px 15px;
+    }
+    
+    .chat-box {
+        height: 300px;
+    }
+    
+    .glowing-text {
+        font-size: 20px;
+    }
+    
+    .intro-text {
+        font-size: 14px;
+    }
+    
+    .dyson-sphere {
+        width: 120px;
+        height: 130px;
+    }
+}
+
+/* Viewport height adjustments */
+@media (max-height: 700px) {
+    .chat-box {
+        height: 300px;
+    }
+    
+    .messages-container {
+        max-height: 200px;
+    }
+}
+
+@media (max-height: 500px) {
+    .chat-box {
+        height: 250px;
+    }
+    
+    .messages-container {
+        max-height: 150px;
+    }
+}
+
+/* Orientation-specific adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    .chat-container {
+        bottom: 100px;
+    }
+    
+    .trigger-container {
+        bottom: 30px;
+    }
+    
+    .chat-box {
+        height: 200px;
+    }
+    
+    .messages-container {
+        max-height: 120px;
+    }
+}
+
+/* Prevent zoom on mobile input focus */
+@viewport {
+    width: device-width;
+    zoom: 1.0;
+}
+
+/* Input font size adjustment for mobile */
+input, textarea {
+    font-size: 16px !important;
+}
+
+/* Touch target sizing */
+button, .futuristic-btn, .we-ai-btn {
+    min-height: 44px;
+}
+
+/* Prevent text size inflation */
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
