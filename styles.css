@@ -92,11 +92,11 @@ canvas#background-canvas {
     margin: 15px auto;
 }
 
-/* Holographic Dyson Sphere */
+/* Holographic Dyson Sphere - Updated Positioning */
 .dyson-sphere {
     position: fixed;
-    bottom: 9px;
-    left: 45%;
+    bottom: 20px;
+    left: 50%;
     transform: translateX(-50%);
     width: 190px;
     height: 200px;
@@ -113,8 +113,8 @@ canvas#background-canvas {
 }
 
 @keyframes rotateSphere {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
 }
 
 @keyframes glowFade {
@@ -122,11 +122,11 @@ canvas#background-canvas {
     100% { box-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 15px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00; }
 }
 
-/* Chat Container */
+/* Chat Container - Updated Positioning */
 .chat-container {
     position: fixed;
     bottom: 220px;
-    left: 37%;
+    left: 50%;
     transform: translateX(-50%);
     width: 90%;
     max-width: 500px;
@@ -181,6 +181,7 @@ canvas#background-canvas {
     left: var(--input-container-offset, 0); /* Default 0, controlled by variable */
     transition: left 0.3s ease;
 }
+
 /* Input Field */
 #chat-input {
     width: 95%;
@@ -270,10 +271,20 @@ canvas#background-canvas {
     border-radius: 3px;
 }
 
+#clear-btn {
+    background: linear-gradient(135deg, #ff3366, #cc0033);
+    margin: 0 5px;
+}
+
+#clear-btn:hover {
+    background: linear-gradient(135deg, #ff0033, #990033);
+    box-shadow: 0 0 15px #ff0033;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     .chat-container {
-        bottom: 120px;
+        bottom: 180px;
         width: 95%;
     }
     
@@ -293,22 +304,12 @@ canvas#background-canvas {
         height: 160px;
         bottom: 15px;
     }
-}
-#clear-btn {
-    background: linear-gradient(135deg, #ff3366, #cc0033);
-    margin: 0 5px;
+    
+    .trigger-container {
+        bottom: 60px;
+    }
 }
 
-#clear-btn:hover {
-    background: linear-gradient(135deg, #ff0033, #990033);
-    box-shadow: 0 0 15px #ff0033;
-}
-/* [YOUR EXISTING CSS CODE REMAINS EXACTLY THE SAME AS ABOVE] */
-/* [PASTE ALL OF YOUR CURRENT CSS HERE] */
-/* [DON'T REMOVE ANY OF YOUR ORIGINAL STYLES] */
-
-/* ===== NEW RESPONSIVE ADDITIONS ===== */
-/* Responsive Design Improvements */
 @media (max-width: 1200px) {
     .chat-container {
         left: 50%;
