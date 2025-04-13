@@ -1,0 +1,305 @@
+/* General Body Styles */
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000000;
+    color: #00ffe0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 100vh;
+}
+
+/* Background Animation */
+canvas#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+/* Hide/show animations */
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: flex;
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* WE AI button container */
+.trigger-container {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    pointer-events: none;
+}
+
+/* WE AI button */
+.we-ai-btn {
+    background: linear-gradient(135deg, #00ffcc, #0066ff);
+    border: none;
+    color: #000;
+    font-size: clamp(14px, 2vw, 20px);
+    padding: clamp(8px, 1.5vw, 12px) clamp(20px, 4vw, 30px);
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffcc;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 1px;
+    pointer-events: auto;
+}
+
+.we-ai-btn:hover {
+    background: linear-gradient(135deg, #00ccff, #00ffcc);
+    box-shadow: 0 0 20px #00ffcc;
+}
+
+/* WE LABS AI ASSISTANT Box */
+.we-labs-box {
+    background: rgba(0, 0, 0, 0.164);
+    padding: 10px 60px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #00ffe0;
+    width: auto;
+    max-width: 450px;
+    text-align: center;
+    color: #00ffe0;
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 15px auto;
+}
+
+/* Holographic Dyson Sphere */
+.dyson-sphere {
+    position: fixed;
+    bottom: 9px;
+    left: 45%;
+    transform: translateX(-50%);
+    width: 190px;
+    height: 200px;
+    border-radius: 44%;
+    border: 1px solid transparent;
+    box-shadow: 
+        0 0 10px #ffcc00, 
+        0 0 20px #ffcc00, 
+        0 0 30px #ffcc00, 
+        0 0 40px #ffcc00, 
+        0 0 50px #ffcc00;
+    animation: rotateSphere 8s infinite linear, glowFade 3s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes rotateSphere {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes glowFade {
+    0% { box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 40px #ffcc00, 0 0 50px #ffcc00; }
+    100% { box-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 15px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00; }
+}
+
+/* Chat Container */
+.chat-container {
+    position: fixed;
+    bottom: 220px;
+    left: 37%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    z-index: 10;
+}
+
+/* Chat Box */
+.chat-box {
+    background: rgba(18, 23, 38, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ffe055;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    padding: 20px;
+}
+
+/* Header */
+.glowing-text {
+    color: #00ffe0;
+    text-align: center;
+    text-shadow: 0 0 10px #00ffe0;
+    margin-bottom: 5px;
+}
+
+.intro-text {
+    color: #00ffe0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+/* Messages Container */
+.messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input Container - Original with left control */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    left: var(--input-container-offset, 0); /* Default 0, controlled by variable */
+    transition: left 0.3s ease;
+}
+/* Input Field */
+#chat-input {
+    width: 95%;
+    padding: 12px 2px;
+    border-radius: 25px;
+    border: 1px solid #00ffe0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #00ffe0;
+    font-family: 'Orbitron', sans-serif;
+    box-shadow: 0 0 10px #00ffe055;
+    font-size: 14px;
+}
+
+#chat-input::placeholder {
+    color: #00ffe0aa;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+/* Buttons */
+.futuristic-btn {
+    background: linear-gradient(135deg, #00ffcc, #0066ff);
+    border: none;
+    color: #000;
+    padding: 12px 0;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffcc;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    flex: 1;
+    font-size: 14px;
+}
+
+.futuristic-btn:hover {
+    background: linear-gradient(135deg, #00ccff, #00ffcc);
+    box-shadow: 0 0 20px #00ffcc;
+    transform: translateY(-2px);
+}
+
+/* Message Bubbles */
+.message {
+    margin: 0;
+    padding: 12px 18px;
+    border-radius: 18px;
+    max-width: 75%;
+    position: relative;
+    word-wrap: break-word;
+    line-height: 1.4;
+    animation: messageFadeIn 0.3s ease-out;
+}
+
+@keyframes messageFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user {
+    background: linear-gradient(135deg, rgba(0, 255, 204, 0.8), rgba(0, 102, 255, 0.8));
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message.ai {
+    background: linear-gradient(135deg, rgba(0, 102, 255, 0.8), rgba(0, 204, 255, 0.8));
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+/* Scrollbar */
+.messages-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+    background: #00ffe0;
+    border-radius: 3px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .chat-container {
+        bottom: 120px;
+        width: 95%;
+    }
+    
+    .chat-box {
+        height: 400px;
+        padding: 15px;
+    }
+    
+    .we-labs-box {
+        font-size: 36px;
+        padding: 15px 30px;
+        margin: 30px auto;
+    }
+    
+    .dyson-sphere {
+        width: 150px;
+        height: 160px;
+        bottom: 15px;
+    }
+}
+#clear-btn {
+    background: linear-gradient(135deg, #ff3366, #cc0033);
+    margin: 0 5px;
+}
+
+#clear-btn:hover {
+    background: linear-gradient(135deg, #ff0033, #990033);
+    box-shadow: 0 0 15px #ff0033;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WE LABS AI</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Ensure visibility toggle works properly */
+    .hidden {
+      display: none;
+    }
+
+    .visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas for animated background -->
+  <canvas id="background-canvas"></canvas>
+
+  <!-- Holographic Dyson Sphere -->
+  <div class="dyson-sphere"></div>
+
+  <!-- Trigger Button -->
+  <div class="trigger-container">
+    <button id="we-ai-trigger" class="we-ai-btn">⚡ WE AI</button>
+  </div>
+
+  <!-- WE LABS AI ASSISTANT Box -->
+  <div class="we-labs-box">
+    WE LABS AI ASSISTANT
+  </div>
+
+  <!-- Hidden Chat Interface -->
+<div class="chat-container hidden" id="chat-interface">
+  <div class="chat-box">
+    <h2 class="glowing-text">WE AI</h2>
+    <p class="intro-text">Ask anything about agriculture...</p>
+    
+    <!-- Messages will appear here -->
+    <div class="messages-container"></div>
+    
+    <div class="input-container">
+      <input type="text" id="chat-input" placeholder="Type your question here..." />
+      <div class="button-container">
+        <button id="send-btn" class="futuristic-btn">Send</button>
+        <button id="voice-btn" class="futuristic-btn">🎙️ mic</button>
+        <button id="clear-btn" class="futuristic-btn">Clear Chat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="trig-background.js"></script>
+  <script src="chat.js"></script>
+
+  <script>
+    // Show/hide chat interface when "WE AI" button is clicked
+    document.getElementById("we-ai-trigger").addEventListener("click", () => {
+      const chatBox = document.getElementById("chat-interface");
+      if (chatBox.classList.contains("hidden")) {
+        chatBox.classList.remove("hidden");
+        chatBox.classList.add("visible");
+      } else {
+        chatBox.classList.remove("visible");
+        chatBox.classList.add("hidden");
+      }
+    });
+
+    // Tab switching functionality (if needed)
+    const tabs = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        tabContents.forEach(content => content.classList.add("hidden"));
+        const activeTabContent = document.getElementById(tab.id.replace("-tab", "-content"));
+        activeTabContent.classList.remove("hidden");
+      });
+    });
+
+    // Voice input functionality
+    const voiceBtn = document.getElementById("voice-btn");
+    const input = document.getElementById("chat-input");
+
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.continuous = false;
+
+      voiceBtn.addEventListener('click', () => {
+        recognition.start();
+      });
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        input.value = transcript;
+      };
+
+      recognition.onerror = function(event) {
+        alert('Speech recognition error: ' + event.error);
+      };
+    } else {
+      voiceBtn.addEventListener('click', () => {
+        alert("Your browser doesn't support voice input. Please type your question.");
+      });
+    }
+  </script>
+</body>
+</html>
