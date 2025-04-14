@@ -80,7 +80,7 @@ canvas#background-canvas {
 .we-labs-box {
     background: rgba(0, 0, 0, 0.164);
     padding: 10px 60px;
-    border-radius: 18px;
+    border-radius: 20px;
     box-shadow: 0 0 20px #00ffe0;
     width: auto;
     max-width: 450px;
@@ -92,15 +92,15 @@ canvas#background-canvas {
     margin: 15px auto;
 }
 
-/* Holographic Dyson Sphere */
+/* Holographic Dyson Sphere - Updated Positioning */
 .dyson-sphere {
     position: fixed;
-    bottom: 8px;
-    left: 46%;
+    bottom: 20px;
+    left: 50%;
     transform: translateX(-50%);
-    width: 160px;
-    height: 170px;
-    border-radius: 45%;
+    width: 190px;
+    height: 200px;
+    border-radius: 44%;
     border: 1px solid transparent;
     box-shadow: 
         0 0 10px #ffcc00, 
@@ -113,8 +113,8 @@ canvas#background-canvas {
 }
 
 @keyframes rotateSphere {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
 }
 
 @keyframes glowFade {
@@ -122,7 +122,7 @@ canvas#background-canvas {
     100% { box-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00, 0 0 15px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00; }
 }
 
-/* Chat Container */
+/* Chat Container - Updated Positioning */
 .chat-container {
     position: fixed;
     bottom: 220px;
@@ -181,6 +181,7 @@ canvas#background-canvas {
     left: var(--input-container-offset, 0); /* Default 0, controlled by variable */
     transition: left 0.3s ease;
 }
+
 /* Input Field */
 #chat-input {
     width: 95%;
@@ -270,10 +271,20 @@ canvas#background-canvas {
     border-radius: 3px;
 }
 
+#clear-btn {
+    background: linear-gradient(135deg, #ff3366, #cc0033);
+    margin: 0 5px;
+}
+
+#clear-btn:hover {
+    background: linear-gradient(135deg, #ff0033, #990033);
+    box-shadow: 0 0 15px #ff0033;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
     .chat-container {
-        bottom: 120px;
+        bottom: 180px;
         width: 95%;
     }
     
@@ -293,13 +304,108 @@ canvas#background-canvas {
         height: 160px;
         bottom: 15px;
     }
-}
-#clear-btn {
-    background: linear-gradient(135deg, #ff3366, #cc0033);
-    margin: 0 5px;
+    
+    .trigger-container {
+        bottom: 60px;
+    }
 }
 
-#clear-btn:hover {
-    background: linear-gradient(135deg, #ff0033, #990033);
-    box-shadow: 0 0 15px #ff0033;
+@media (max-width: 1200px) {
+    .chat-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+    }
+    
+    .dyson-sphere {
+        left: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .chat-container {
+        bottom: 180px;
+    }
+    
+    .trigger-container {
+        bottom: 60px;
+    }
+    
+    .we-labs-box {
+        font-size: 40px;
+        padding: 10px 40px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    .chat-container {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        width: 90%;
+        max-width: 100%;
+        margin: 20px auto;
+    }
+    
+    .chat-box {
+        height: 400px;
+    }
+    
+    .trigger-container {
+        position: relative;
+        bottom: auto;
+        margin: 20px 0;
+        padding: 20px 0;
+    }
+    
+    .we-labs-box {
+        font-size: 32px;
+        padding: 10px 30px;
+        margin: 30px auto;
+    }
+    
+    .dyson-sphere {
+        position: relative;
+        bottom: auto;
+        left: 50%;
+        margin: 20px auto;
+        transform: translateX(-50%);
+    }
+    
+    .messages-container {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .chat-box {
+        height: 350px;
+        padding: 10px;
+    }
+    
+    .we-labs-box {
+        font-size: 28px;
+        padding: 8px 20px;
+    }
+    
+    .message {
+        max-width: 85%;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .button-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .futuristic-btn {
+        width: 100%;
+    }
 }
