@@ -25,21 +25,21 @@ let isTyping = false;
 // Initialize WebSocket Connection
 async function initWebSocket() {
     try {
-        // Create new conversation (update with Railway URL)
-        const response = await fetch('https://web-production-56ab.up.railway.app/conversations', {
+        // Create new conversation
+        const response = await fetch('http://localhost:8000/conversations', {
             method: 'POST'
         });
         const data = await response.json();
         conversationId = data.conversation_id;
         
-        // Connect to WebSocket (update with Railway WebSocket URL)
-        socket = new WebSocket(`wss://web-production-56ab.up.railway.app/ws/${conversationId}`);
+        // Connect to WebSocket
+        socket = new WebSocket(`ws://localhost:8000/ws/${conversationId}`);
         
         socket.onmessage = (event) => {
             if (isTyping) {
                 // Append to existing AI message
                 const lastMessage = messagesContainer.lastChild;
-                lastMessage.textContent += event.data;
+                lastMessage.innerHTML += formatBoldText(event.data);
             } else {
                 // Create new AI message
                 addMessage('ai', event.data);
@@ -61,30 +61,38 @@ async function initWebSocket() {
 function addMessage(sender, text) {
     const messageDiv = document.createElement("div");
     messageDiv.classList.add("message", sender);
-    
+
+    // Replace **word** with <strong>word</strong> before inserting
+    const formattedText = formatBoldText(text);
+
     if (sender === 'user') {
         // User messages appear instantly
-        messageDiv.textContent = text;
+        messageDiv.innerHTML = formattedText;
     } else {
         // AI messages use typewriter effect
         isTyping = true;
-        typeWriter(messageDiv, text, () => {
+        typeWriter(messageDiv, formattedText, () => {
             isTyping = false;
         });
     }
-    
+
     messagesContainer.appendChild(messageDiv);
     scrollToBottom();
+}
+
+// Format Bold Text
+function formatBoldText(text) {
+    return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 }
 
 // Typewriter Effect
 function typeWriter(element, text, onComplete, speed = 20) {
     let i = 0;
-    element.textContent = "";
-    
+    element.innerHTML = "";
+
     function type() {
         if (i < text.length) {
-            element.textContent += text.charAt(i);
+            element.innerHTML += text.charAt(i);
             i++;
             setTimeout(type, speed);
         } else if (onComplete) {
@@ -154,7 +162,7 @@ async function clearConversation() {
         
         // End current conversation
         if (conversationId) {
-            await fetch(`https://web-production-56ab.up.railway.app/conversations/${conversationId}/end`, {
+            await fetch(`http://localhost:8000/conversations/${conversationId}/end`, {
                 method: 'POST'
             });
         }
