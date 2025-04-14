@@ -21,25 +21,24 @@ let isTyping = false;
 // ========================
 // CORE FUNCTIONS
 // ========================
-
 // Initialize WebSocket Connection
 async function initWebSocket() {
     try {
-        // Create new conversation
-        const response = await fetch('http://localhost:8000/conversations', {
+        // Create new conversation (update with Railway URL)
+        const response = await fetch('https://web-production-56ab.up.railway.app/conversations', {
             method: 'POST'
         });
         const data = await response.json();
         conversationId = data.conversation_id;
         
-        // Connect to WebSocket
-        socket = new WebSocket(`ws://localhost:8000/ws/${conversationId}`);
+        // Connect to WebSocket (update with Railway WebSocket URL)
+        socket = new WebSocket(`wss://web-production-56ab.up.railway.app/ws/${conversationId}`);
         
         socket.onmessage = (event) => {
             if (isTyping) {
                 // Append to existing AI message
                 const lastMessage = messagesContainer.lastChild;
-                lastMessage.innerHTML += formatBoldText(event.data);
+                lastMessage.textContent += event.data;
             } else {
                 // Create new AI message
                 addMessage('ai', event.data);
